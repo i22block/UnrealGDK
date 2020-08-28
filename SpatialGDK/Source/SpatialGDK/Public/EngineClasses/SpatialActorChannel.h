@@ -298,7 +298,7 @@ private:
 	FHandoverChangeState GetHandoverChangeList(TArray<uint8>& ShadowData, UObject* Object);
 
 	void UpdateVisibleComponent(AActor* Actor);
-	
+
 	bool SatisfiesSpatialPositionUpdateRequirements();
 
 public:
