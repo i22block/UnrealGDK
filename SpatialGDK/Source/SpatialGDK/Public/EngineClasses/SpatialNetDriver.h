@@ -247,10 +247,7 @@ private:
 	UFUNCTION()
 	void OnMapLoaded(UWorld* LoadedWorld);
 
-	UFUNCTION()
-	void OnLevelAddedToWorld(ULevel* LoadedLevel, UWorld* OwningWorld);
-
-	void OnActorSpawned(AActor* Actor);
+	void OnActorSpawned(AActor* Actor) const;
 
 	static void SpatialProcessServerTravel(const FString& URL, bool bAbsolute, AGameModeBase* GameMode);
 
@@ -279,8 +276,6 @@ private:
 	// The SpatialSender uses these indexes to retry any failed reliable RPCs
 	// in the correct order, if needed.
 	int NextRPCIndex;
-
-	float TimeWhenPositionLastUpdated;
 
 	// Counter for giving each connected client a unique IP address to satisfy Unreal's requirement of
 	// each client having a unique IP address in the UNetDriver::MappedClientConnections map.

@@ -263,7 +263,6 @@ public:
 											 const FObjectReferencesMap& RefMap, UObject* Object);
 
 	void UpdateShadowData();
-	void UpdateSpatialPositionWithFrequencyCheck();
 	void UpdateSpatialPosition();
 
 	void ServerProcessOwnershipChange();
@@ -299,6 +298,8 @@ private:
 	FHandoverChangeState GetHandoverChangeList(TArray<uint8>& ShadowData, UObject* Object);
 
 	void UpdateVisibleComponent(AActor* Actor);
+	
+	bool SatisfiesSpatialPositionUpdateRequirements();
 
 public:
 	// If this actor channel is responsible for creating a new entity, this will be set to true once the entity creation request is issued.

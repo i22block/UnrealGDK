@@ -46,9 +46,8 @@ USpatialGDKEditorSettings::USpatialGDKEditorSettings(const FObjectInitializer& O
 	, StandardRuntimeVersion(SpatialGDKServicesConstants::SpatialOSRuntimePinnedStandardVersion)
 	, CompatibilityModeRuntimeVersion(SpatialGDKServicesConstants::SpatialOSRuntimePinnedCompatbilityModeVersion)
 	, ExposedRuntimeIP(TEXT(""))
-	, bStopLocalDeploymentOnEndPIE(false)
-	, bStopSpatialOnExit(false)
 	, bAutoStartLocalDeployment(true)
+	, AutoStopLocalDeployment(EAutoStopLocalDeploymentMode::OnExitEditor)
 	, bStopPIEOnTestingCompleted(true)
 	, CookAndGeneratePlatform("")
 	, CookAndGenerateAdditionalArguments("-cookall -unversioned")
@@ -244,6 +243,12 @@ void USpatialGDKEditorSettings::SetSimulatedPlayerCluster(const FString& NewClus
 void USpatialGDKEditorSettings::SetSimulatedPlayersEnabledState(bool IsEnabled)
 {
 	bSimulatedPlayersIsEnabled = IsEnabled;
+	SaveConfig();
+}
+
+void USpatialGDKEditorSettings::SetSpatialDebuggerEditorEnabled(bool IsEnabled)
+{
+	bSpatialDebuggerEditorEnabled = IsEnabled;
 	SaveConfig();
 }
 
